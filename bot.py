@@ -150,7 +150,7 @@ async def filter_messages(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-    # فحش
+            # فحش
     for word in BAD_WORDS:
         if word in text:
             await update.message.delete()
