@@ -150,28 +150,27 @@ async def filter_messages(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-    # فحش
-    for word in BAD_WORDS:
-        if word in text:
-            await update.message.delete()
+# فحش
+for word in BAD_WORDS:
+    if word in text:
+        await update.message.delete()
 
-            if user_id not in warnings:
-                warnings[user_id] = {"count": 0, "last_offense": None}
+        if user_id not in warnings:
+            warnings[user_id] = {"count": 0, "last_offense": None}
 
-            warnings[user_id]["count"] += 1
-            warnings[user_id]["last_offense"] = datetime.utcnow()
+        warnings[user_id]["count"] += 1
+        warnings[user_id]["last_offense"] = datetime.utcnow()
 
-count = warnings[user_id]["count"]
+        count = warnings[user_id]["count"]
 
-            await update.effective_chat.send_message(
-                f"⚠️ {user.full_name} اخطار گرفت! ({count}/5)"
-            )
+        await update.effective_chat.send_message(
+            f"⚠️ {user.full_name} اخطار گرفت! ({count}/5)"
+        )
 
-            if count >= 5:
-                await apply_punishment(update, context, user_id, user.full_name)
+        if count >= 5:
+            await apply_punishment(update, context, user_id)
 
-            break
-
+        break
 # =========================
 # پنل مدیریتی
 # =========================
