@@ -20,7 +20,7 @@ from telegram.ext import (
 # ======================================
 
 TOKEN = os.getenv("BOT_TOKEN")
-BOT_USERNAME = "Bnd_3346bot"  # یوزرنیم ربات بدون @
+BOT_USERNAME = "Bnd_3346bot"
 MAIN_ADMINS = [1092487850, 7337011539]
 
 # ======================================
